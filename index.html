@@ -5,17 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LOVE~嘘はとびきりの愛~</title>
 <script>
-window.addEventListener('error', function(e){
-  alert('エラー: ' + e.message + '\n' + (e.filename||'') + ':' + (e.lineno||''));
-});
-window.addEventListener('unhandledrejection', function(e){
-  alert('Promiseエラー: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
-});
 window.addEventListener('load', function(){
-  setTimeout(function(){
-    alert('診断\nsupabase: ' + typeof supabase + '\nact: ' + typeof act);
-  }, 1500);
+  var b = document.querySelector('button');
+  b.addEventListener('click', async function(){
+    alert('クリック検知。通信テストを開始します');
+    try {
+      var r = await sb.auth.getSession();
+      alert('セッション: ' + (r.data.session ? 'あり' : 'なし') + (r.error ? '\nエラー: ' + r.error.message : ''));
+      var r2 = await sb.rpc('create_room', { p_name: 'test' });
+      alert('create_room結果:\n' + JSON.stringify(r2).slice(0, 300));
+    } catch (e) {
+      alert('例外: ' + e.message);
+    }
+  });
 });
+
 </script>
 <style>
 body{font-family:sans-serif;max-width:480px;margin:0 auto;padding:12px;background:#f4efe6;color:#333}
