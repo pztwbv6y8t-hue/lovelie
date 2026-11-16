@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LOVE~嘘はとびきりの愛~</title>
+<script>
+window.addEventListener('error', function(e){
+  alert('エラー: ' + e.message + '\n' + (e.filename||'') + ':' + (e.lineno||''));
+});
+window.addEventListener('unhandledrejection', function(e){
+  alert('Promiseエラー: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
+});
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    alert('診断\nsupabase: ' + typeof supabase + '\nact: ' + typeof act);
+  }, 1500);
+});
+</script>
 <style>
 body{font-family:sans-serif;max-width:480px;margin:0 auto;padding:12px;background:#f4efe6;color:#333}
 h1{font-size:22px;margin:4px 0}
@@ -45,7 +58,7 @@ button.warn{background:#b33}
 <script src="avatar.js"></script>
 <script src="leave.js"></script>
 <script src="reveal.js"></script>
-<script src="design.js"></script> 
+<script src="design.js"></script>
 </body>
 </html>
 
