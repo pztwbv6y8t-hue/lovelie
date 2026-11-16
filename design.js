@@ -338,7 +338,7 @@ button.lie{background:#b3392f}
     } else if (st.phase === 'declare') {
       if (mineTurn) {
         h += '<div class="cc-mine">あなただけに見えています</div>' + dieFace(myFace) +
-          '<div class="cc-hintx">' + (myFace === 'X' ? '×が出ました。必ず嘘の数字を宣言します' : '本当の数字でも、嘘の数字でも宣言できます') + '</div>' +
+          '<div class="cc-hintx">' + (myFace === 'X' ? '×が出ました。必ず嘘の数字を宣言してください' : '本当の数字でも、嘘の数字でも宣言できます') + '</div>' +
           '<div class="cc-nums">' + [1, 2, 3, 4].map(n => '<button onclick="act.decl(' + n + ')">' + n + '</button>').join('') + '</div>';
       } else h += wait(tp, '数字を宣言するのを待っています');
     } else if (st.phase === 'judge') {
